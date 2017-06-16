@@ -1,0 +1,26 @@
+main {
+  position: relative;
+  margin: 50px auto;
+  width: 275px;
+}
+img {
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+}
+/* size of hat: 275x167
+   size of octopus: 210x288 */
+#octopus {
+  z-index: 0;
+  top: 50px; 
+  left: 20px; 
+}
+/* size of glasses: 135x58 */
+#glasses {
+  z-index: 1; 
+  top: 150px;
+  left: 63px;
+}
+#hat {
+  z-index: 2;
+}
