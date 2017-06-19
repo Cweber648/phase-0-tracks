@@ -5,14 +5,14 @@ puts "Hello #{name}, Glad to have you, What is your volume level"
 puts "Thank you, your volume has been put as #{volume}"
 puts "What is your fur color"
   fur = gets.chomp
-puts "are you a good candidate for adoption?"
+puts "Wow, #{fur} is a great color! are you a good candidate for adoption?"
   answer = gets.chomp
     if answer == "yes"
       answer = true
     elsif answer == "no"
       answer = false
      end
-puts "thank you for your response, how old are you?"
+puts "thank you for your response, It is #{answer} that you want to be adopted. How old are you?"
   number = gets.chomp
     if number.empty?
       number = nil
