@@ -14,6 +14,24 @@ puts "Our company cafeteria serves garlic bread. Should we order some for you?"
   garlic_bread = gets.chomp
 puts "Would you like to enroll in the company’s health insurance?"
   health_insurance = gets.chomp
+puts "Please list any allergies, when finished type done."
+#list allergies, when user is done listing type "Done" loop will end,
+
+  total_allergies = 1
+  output = "unknown"
+until  total_allergies == 0
+  allergies = gets.chomp
+  total_allergies += 1
+  if allergies == "sunshine"
+    output = "probably a vampire"
+    total_allergies = 0
+  end
+  if allergies == "done"
+  total_allergies = 0
+end
+end
+
+
 
 
 if health_insurance == "yes"
@@ -35,33 +53,34 @@ if actual_age == age
 else
   vamp_actual_age = false
 end
-output = "unknown"
-
-if vamp_actual_age && (vamp_garlic_correct || vamp_health_correct)
-  #if true and yes(true) and yes (true)
-    output = "Probably not a Vampire"
-end
-
-if
-  !vamp_actual_age && (!vamp_garlic_correct || !vamp_health_correct)
-  #if age false and no or no
-    output = "Probably a Vampire"
-end
-
-if
-  !vamp_actual_age && !vamp_garlic_correct && !vamp_health_correct
-  #if age false and no and no
-    output = "Almost certainly a Vampire"
-end
-
-if user_name == "Drake Cula" || user_name == "Tu Fang"
-  output = "Definitely a Vampire"
-end
 
 if output == "unknown"
-  output = "Results Inconclusive"
-end
 
+  if vamp_actual_age && (vamp_garlic_correct || vamp_health_correct)
+    #if true and yes(true) and yes (true)
+      output = "Probably not a Vampire"
+  end
+
+  if
+    !vamp_actual_age && (!vamp_garlic_correct || !vamp_health_correct)
+    #if age false and no or no
+      output = "Probably a Vampire"
+  end
+
+  if
+    !vamp_actual_age && !vamp_garlic_correct && !vamp_health_correct
+    #if age false and no and no
+    output = "Almost certainly a Vampire"
+  end
+
+  if user_name == "Drake Cula" || user_name ==  "Tu Fang"
+    output = "Definitely a Vampire"
+  end
+
+  if output == "unknown"
+    output = "Results Inconclusive"
+  end
+end
 puts "#{output}"
 
 end
