@@ -35,7 +35,36 @@ if actual_age == age
 else
   vamp_actual_age = false
 end
+output = "unknown"
 
+if vamp_actual_age && (vamp_garlic_correct || vamp_health_correct)
+  #if true and yes(true) and yes (true)
+    output = "Probably not a Vampire"
+end
+
+if
+  !vamp_actual_age && (!vamp_garlic_correct || !vamp_health_correct)
+  #if age false and no or no
+    output = "Probably a Vampire"
+end
+
+if
+  !vamp_actual_age && !vamp_garlic_correct && !vamp_health_correct
+  #if age false and no and no
+    output = "Almost certainly a Vampire"
+end
+
+if user_name == "Drake Cula" || user_name == "Tu Fang"
+  output = "Definitely a Vampire"
+end
+
+if output == "unknown"
+  output = "Results Inconclusive"
+end
+
+puts "#{output}"
+
+end
 
 
 
