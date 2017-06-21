@@ -1,0 +1,60 @@
+section {
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 2%;
+}
+header, footer {
+  margin: 0 0 1% 0;
+  padding: 2%;
+  width: 100%;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQnhOunWVqYCb_4GqQwDXPqrkY4Whcgcrjl23AV7WgyIPn0YrL3g");
+}
+body {
+  background-color: white;
+  border: 0;
+  padding: 0;
+}
+img {
+  width: 2em;
+  height: 2em;
+}
+.octocat {
+  width: 2.1em;
+  height: 2.1em;
+}
+.octocat, header h1 {
+  display: inline-block;
+  vertical-align: top;
+}
+ul li {
+  list-style-type: square;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color: blue;
+}
+a:hover {
+  background-color: #f67280;
+  color: black;
+}
+a:visited {
+  color: red;
+}
+summary {
+  padding-left: 1%;
+  background-color: #f3f5f6;
+  border-bottom: 1px solid black;
+}
+details{
+  background-color: #d4d4d4;
+}
+details p {
+  padding: 2% 2% 5% 5%;
+  font-family: "Arial";
+}
+h2 {
+  border-bottom: 2px solid black;
+}
