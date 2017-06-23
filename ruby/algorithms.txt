@@ -1,0 +1,8 @@
+4.2 Algorithms
+Release 0: Equip Your New Robot
+  Write the algorithm for using an elevator.
+  - 
+
+Release 1: Find a Real-Life Algorithm
+  Example of a common task: Showing up to work on time.
+  -
