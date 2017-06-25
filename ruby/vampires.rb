@@ -1,3 +1,32 @@
+# Methods
+
+# Validates is input for number
+def validate_number(number)
+	(number != 0)
+end
+
+# Changes yes or no to true or false
+def input_to_boolean(string)
+	if string == "yes"
+		true
+	elsif string = "no"
+		false
+	else
+		nil
+	end
+end
+
+# Checks age input and birth_year input match
+def match_age(age, birth_year)
+	year = Time.new.year
+	calculated_age = year - birth_year
+	if (age == calculated_age || age == calculated_age -1)
+		true
+	else
+		false
+	end
+end
+
 # Process Multiple Employees
 puts "How many employees would be processed?"
 employees = gets.chomp
@@ -16,7 +45,7 @@ wants_health_insurance = gets.chomp
 
 # Detection
 =begin
-check_age = validate_age(age, birth_year)
+check_age = match_age(age, birth_year)
 if (check_age && likes_garlic)
 	puts “Probably not a vampire.”
 elsif (!check_age && (!likes_garlic || !wants_health_insurance)
