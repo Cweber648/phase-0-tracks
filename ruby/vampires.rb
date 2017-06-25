@@ -9,7 +9,7 @@ end
 def input_to_boolean(string)
 	if string == "yes"
 		true
-	elsif string = "no"
+	elsif string == "no"
 		false
 	else
 		nil
@@ -29,32 +29,30 @@ end
 
 # Process Multiple Employees
 puts "How many employees would be processed?"
-employees = gets.chomp
+employees = gets.chomp.to_i
 
 # Interview
 puts 'What is your name?'
 name = gets.chomp
 puts 'How old are you?'
-age = gets.chomp
+age = gets.chomp.to_i
 puts 'What year were you born?'
-birth_year = gets.chomp
+birth_year = gets.chomp.to_i
 puts 'Our company cafeteria serves garlic bread. Sholud we order some for you? Yes or no.'
 likes_garlic = gets.chomp
 puts "Would you like to enroll in the company's health insurance? Yes or no"
 wants_health_insurance = gets.chomp
 
 # Detection
-=begin
 check_age = match_age(age, birth_year)
 if (check_age && likes_garlic)
-	puts “Probably not a vampire.”
-elsif (!check_age && (!likes_garlic || !wants_health_insurance)
-	puts “Probably a vampire.”
+	puts 'Probably not a vampire.'
+elsif (!check_age && (!likes_garlic || !wants_health_insurance))
+	puts 'Probably a vampire.'
 elsif (!check_age && !likes_garlic && !wants_health_insurance)
-	puts “Almost certainly a vampire.”
+	puts 'Almost certainly a vampire.'
 elsif (name == 'drake cula' || name == 'tu fang')
-	puts “Definitely a vampire.”
+	puts 'Definitely a vampire.'
 else
-	puts “Results inconclusive.”
+	puts 'Results inconclusive.'
 end
-=end
