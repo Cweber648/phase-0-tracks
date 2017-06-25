@@ -1,0 +1,10 @@
+*Push the up or down button to call the elevator (Top button is Up, Bottom button is Down)
+* Step into the elevator (door will close automatically after 5 seconds)
+* Turn and face the buttons to see what possible floor options.
+* Pending how many floors and columns of buttons the very top button will be the highest floor.
+* Lowest button will be for the lowest possible floor
+* If you are going to floor 2. Push the button that has "2" on it.
+*If you have not learned how to read yet. It will be the second button on the column of elevator buttons.
+*Wait until the elevator begins to move
+*Once elevator has stopped moving. The doors will open.
+*Once doors open, step outside of elevator at your desired floor.
