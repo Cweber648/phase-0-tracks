@@ -31,30 +31,33 @@ end
 puts "How many employees would be processed?"
 employees = gets.chomp.to_i
 
-# Interview
-puts 'What is your name?'
-name = gets.chomp
-puts 'How old are you?'
-age = gets.chomp.to_i
-puts 'What year were you born?'
-birth_year = gets.chomp.to_i
-puts 'Our company cafeteria serves garlic bread. Sholud we order some for you? Yes or no.'
-likes_garlic = gets.chomp
-likes_garlic = input_to_boolean(likes_garlic)
-puts "Would you like to enroll in the company's health insurance? Yes or no"
-wants_health_insurance = gets.chomp
-wants_health_insurance = input_to_boolean(wants_health_insurance)
+for i in 1..employees
+	# Interview
+	puts 'What is your name?'
+	name = gets.chomp
+	puts 'How old are you?'
+	age = gets.chomp.to_i
+	puts 'What year were you born?'
+	birth_year = gets.chomp.to_i
+	puts 'Our company cafeteria serves garlic bread. Sholud we order some for you? Yes or no.'
+	likes_garlic = gets.chomp
+	likes_garlic = input_to_boolean(likes_garlic)
+	puts "Would you like to enroll in the company's health insurance? Yes or no"
+	wants_health_insurance = gets.chomp
+	wants_health_insurance = input_to_boolean(wants_health_insurance)
 
-# Detection
-check_age = match_age(age, birth_year)
-if (name == 'drake cula' || name == 'tu fang')
-	puts 'Definitely a vampire.'
-elsif (!check_age && !likes_garlic && !wants_health_insurance)
-	puts 'Almost certainly a vampire.'
-elsif (!check_age && (!likes_garlic || !wants_health_insurance))
-	puts 'Probably a vampire.'
-elsif (check_age && likes_garlic)
-	puts 'Probably not a vampire.'
-else
-	puts 'Results inconclusive.'
+
+	# Detection
+	check_age = match_age(age, birth_year)
+	if (name == 'drake cula' || name == 'tu fang')
+		puts 'Definitely a vampire.'
+	elsif (!check_age && !likes_garlic && !wants_health_insurance)
+		puts 'Almost certainly a vampire.'
+	elsif (!check_age && (!likes_garlic || !wants_health_insurance))
+		puts 'Probably a vampire.'
+	elsif (check_age && likes_garlic)
+		puts 'Probably not a vampire.'
+	else
+		puts 'Results inconclusive.'
+	end
 end
