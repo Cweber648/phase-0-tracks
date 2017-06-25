@@ -1,8 +1,38 @@
 4.2 Algorithms
 Release 0: Equip Your New Robot
   Write the algorithm for using an elevator.
-  - 
+  - Move toward the elevator
+  - Check the current floor
+  - If current floor is bigger than desired floor
+    - Press up button
+  - If current floor is less than desired floor
+    - Press down button
+  - Wait for the elevator doors to open
+  - When the doors open
+    - Move into the elevator
+    - Make a 180 degree turn
+    - Press the number of desired floor
+  - Wait until the elevator closes the door and moves to the desired floor
+  - Check the current floor
+  - When the current floor is the desired floor
+    - Wait for the door to open
+  - When the door opens
+    - Move out of the elevator  
 
 Release 1: Find a Real-Life Algorithm
   Example of a common task: Showing up to work on time.
-  -
+  - Go to sleep before 12 AM
+  - Sleep until the first alram at 6 AM
+  - When alram rings, Hit snooze button and go back to sleep for 8 minutes
+  - When first snooze alram rings, Hit snooze button and go back to sleep for 8 minutes
+  - When second snooze alram rings, Get up and walk towards the bathroom
+  - Go into the bathroom and turn the shower on
+  - Get undressed
+  - Get in the shower
+  - Stand in the shower with water running for 20 minutes
+  - Get out of the shower
+  - Dry the body with a towel
+  - Brush Teeth
+  - Get dressed
+  - Walk towards the car
+  - Drive to work 
