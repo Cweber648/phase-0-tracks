@@ -1,3 +1,7 @@
+# Process Multiple Employees
+puts "How many employees would be processed?"
+employees = gets.chomp
+
 # Interview
 puts 'What is your name?'
 name = gets.chomp
@@ -11,13 +15,6 @@ puts "Would you like to enroll in the company's health insurance? Yes or no"
 wants_health_insurance = gets.chomp
 
 # Detection
-=begin
-If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, the result is “Probably not a vampire.”
-If the employee got their age wrong, and hates garlic bread or waives insurance, the result is “Probably a vampire.”
-If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, the result is “Almost certainly a vampire.”
-Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
-Otherwise, print “Results inconclusive.”
-=end
 =begin
 check_age = validate_age(age, birth_year)
 if (check_age && likes_garlic)
