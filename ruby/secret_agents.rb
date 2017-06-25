@@ -1,3 +1,4 @@
+# Release 2
 # encrypt
 # - Loop through the string
 #   - Use .next! method on the letter
@@ -25,16 +26,36 @@ def decrypt(string)
 	string
 end
 
+# Release 3
+=begin
+encrypt("abc") should return "bcd"
+encrypt("zed") should return "afe"
+decrypt("bcd") should return "abc"
+decrypt("afe") should return "zed"
 
 puts encrypt("abc")
 puts encrypt("zed")
 puts decrypt("bcd")
 puts decrypt("afe")
-=begin
-	
-encrypt("abc") should return "bcd"
-encrypt("zed") should return "afe"
-decrypt("bcd") should return "abc"
-decrypt("afe") should return "zed"
-	
 =end
+
+# Release 4
+# puts decrypt(encrypt("swordfish"))
+=begin
+	Comment:
+	The encrypt method runs first returning "txpsegjti" and the decrypt method runs returning "swordfish".
+=end
+
+# Driver Code
+puts "Would you like to decrypt or encrypt a password?"
+password_cryption = gets.chomp
+puts "What password would you like to #{password_cryption}?"
+password = gets.chomp
+
+if password_cryption == "encrypt"
+  password = encrypt(password)
+elsif password_cryption == "decrypt"
+  password = decrypt(password)
+end
+
+puts "Your #{password_cryption}ed password is #{password}"
