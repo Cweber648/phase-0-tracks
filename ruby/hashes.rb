@@ -5,22 +5,30 @@ puts "What is your name?"
  name = gets.chomp
 
 p "What is your Age (if you dont mind me asking)"
- age = gets.chomp
+ age = gets.chomp.to_i
 
 puts "How many kids do you have?"
- kids = gets.chomp
+ kids = gets.chomp.to_i
 
 puts "What is your preffered decor theme"
- theme = gets.chomp
-
-
+ decor_theme = gets.chomp
+#include all variables that are being asked
 client_form = {
-  :name => "Charlie",
-  :age => "27",
-  :number_kids => "none",
-  :decor_theme => "Rustic Cowboy"
+  :name => "#{name}",
+  :age => "#{age}",
+  :number_kids => "#{kids}",
+  :decor_theme => "#{decor_theme}",
 }
- p client_form[:name] =  "Charlie"
- p client_form[:age] =  "28"
- p client_form[:number_kids] = "none"
- p client_form[:theme] = "Rustic Cowboy"
+
+#have user prompt a change. Do? How to make the program recognize that a user wants to change a key. Making an if else statement. That way it will only go through one time. did not need to blank array.
+
+puts "Did you want to update?( please type name , age , kids , decor or skip)"
+ update = gets.chomp
+
+
+
+  #print a new updated theme
+ p client_form[:decor_theme] = "#{decor_theme}"
+
+puts "here is your updated client-form"
+ p client_form
