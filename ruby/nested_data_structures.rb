@@ -1,3 +1,4 @@
+
 wrigley_field = {
    park_info: {
     :seats => '45,000',
