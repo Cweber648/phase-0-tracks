@@ -56,3 +56,30 @@ end
   p cubs_numbers
 
 
+#Release 2.1
+cubs_numbers.reject do |name, number|
+  number < 30
+end
+
+#Release 2.2
+cubs_numbers.select { |name, number| number.even? }
+
+#Release 2.3
+cubs_numbers.each do |name, number|
+   if name.length <= 5
+     p name
+  end
+end
+
+#Release 2.4
+cubs_players.each do |name|
+  if name.include? ("a")
+    break
+  else
+    p name
+  end
+end
+
+
+
+
