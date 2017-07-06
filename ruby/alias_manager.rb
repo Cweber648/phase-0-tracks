@@ -34,3 +34,8 @@ name_character.map! do |character_next|
       vowel_position += 1
     end
     character_next = vowels[vowel_position]
+  end
+end
+p name_character.join('')
+
+#put each consonant change and vowel change together.
