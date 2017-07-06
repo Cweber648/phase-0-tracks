@@ -19,3 +19,18 @@ vowels = [
  # want. identify each vowel in the name. and change to next vowel
 
 name_character = name.chars
+
+#make the vowels run through each letter of the name
+name_character.map! do |character_next|
+  if character_next == " "
+    character_next = " "
+    #account for the space between the names
+  elsif vowels.index(character_next)
+    vowel_position = vowels.index(character_next)
+    if character_next == vowels[-1]
+      vowel_position = 0
+      #if vowel is = index last we want it to loop back to the first letter of the vowels
+    else
+      vowel_position += 1
+    end
+    character_next = vowels[vowel_position]
