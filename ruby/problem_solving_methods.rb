@@ -11,30 +11,21 @@ end
 # p search_array([1,2,3,4,5],10)
 
 # Release 1
-def fibonacci(number)
-  # Create an Array
-  # Fill array with Fibonacci sequence
-  #   Push sum of array[i], array[i+1]
-  fibonacci_sequence = []
-  first = 0
-  second = 1 
-  fibonacci_sequence.push(first, second)
-  #  for i in 2..number do
-  #  fibonacci_sequence.push(first + second)
-  i = 2
-  while i < number do
-    sum = first + second
-    fibonacci_sequence.push(sum)
-    temporary = second
-    first = temporary
-    second = sum 
-    i += 1
-  end 
-  fibonacci_sequence
+def fib(number)
+  #need an empty array to put numbers into
+  array = []
+  #for the numbers leading up to the given number
+  for i in 0..number-1
+    if i == 0
+      array.push(0)
+    elsif i == 1
+      array.push(1)
+    else
+      array.push(array[i-2] + array[i-1])
+    end
+  end
+  array
 end
-
-# p fibonacci(6)
-# p fibonacci(100)[-1] == 218922995834555169026
 
 # Release 2
 # Insertion Sort
