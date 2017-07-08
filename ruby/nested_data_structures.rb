@@ -1,5 +1,5 @@
 # Release 2
-# Nested data structure for R&B Albums chart on Billboard
+# Nested data structure for Purple rain album
 
 purple_rain = {
   artists: ["Prince","The Revolution"],
@@ -48,3 +48,7 @@ purple_rain = {
     ]
   }
 }
+
+puts "Now Playing:"
+puts "#{purple_rain[:track][:side_two][3][:title]} by #{purple_rain[:artists][0]} and #{purple_rain[:artists][1]}"
+puts "#{purple_rain[:track][:side_two][3][:length]}"
