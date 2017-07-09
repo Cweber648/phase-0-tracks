@@ -1,6 +1,18 @@
+# Psuedocode
+# =>Change spy's real name to alias
+# =>  Swap first and last name
+# =>  Change vowels to the next vowel and consonants to the next consonants
+# =>Validate full name 
+# =>  Check if it has first and last name, and if it only consists of alphabets and white spaces.
+# =>User Interface
+# =>  Ask the user for a full name
+# =>  If user input is valid
+# =>    Change the name to alias
+# =>  Repeat until user enters 'quit' or just presses enter
+
 # Release 0
 # Write a method that takes a spy's real name and creates a fake name with it by doing the following:
-# 1. Swapping the fist and last name.
+# 1. Swapping the first and last name.
 # 2. Changing all of the vowels (a, e, i, o, or u) to the next vowel in 'aeiou', and all of the consonants (everything else besides the vowels) to the next consonant in the alphabet. So 'a' would become 'e', 'u' would become 'a', and 'd' would become 'f'.
 
 def alias_generator(full_name)
