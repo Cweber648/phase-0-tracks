@@ -33,8 +33,26 @@ end
 
 # Validate full name
 def validate_full_name(user_input)
-  
+  (user_input.split(" ").length == 2) && (user_input.match(/^[[:alpha:][:blank:]]+$/))
 end
+
+# User interface
+def prompt_UI
+  puts "#{yield}"
+  gets.chomp
+end
+
 def alias_generator_UI
-  
+  real_name = prompt_UI{"What's the name of the spy?"}
+  begin
+    if validate_full_name(real_name)
+      fake_name = alias_generator(real_name)
+      puts  "#{real_name}: #{fake_name}"
+    else
+      puts "Not a valid name"
+    end
+    real_name = prompt_UI{"Any other spys? if not type 'quit' or press enter"}
+  end until real_name == "quit" || real_name == ""
 end
+
+
