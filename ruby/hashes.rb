@@ -30,13 +30,7 @@ def validate_boolean_input(string)
 	end
 end
 
-def validate_age(user_input)
-	# Check if age is between 15 - 100
-	age = user_input.to_i
-	(validate_number_input(user_input) && age >= 15 && age <= 100)
-end
-
-def validate_budget(user_input)
+def validate_zero_and_up(user_input)
 	# Check if budget is more than or equal to 0
 	budget = user_input.to_i
 	(validate_number_input(user_input) && budget >= 0)
@@ -55,37 +49,61 @@ end
 def get_age
 	#   Ask for the age
 	#     if user input isn't a number, keep asking until input is a number
-	puts "What is your client's age?"
+	begin
+		puts "What is your client's age? (Value must be bigger than or equal to 0)"
+		age_input = gets.chomp
+	end until validate_zero_and_up(age_input)
+	age_input.to_i
 end
 
 def get_children_count
 	#   Ask for number of children
 	#     if user input isn't a number, keep asking until input is a number
-	puts "How many childrens your client have?" 
+	begin
+		puts "How many childrens your client have? (Value must be bigger than or equal to 0)"
+		count_input = gets.chomp
+	end until validate_zero_and_up(count_input)
+	count_input.to_i
 end
 
 def get_decor_theme
 	#   Ask for decor theme
 	puts "Does your client have any decor theme in mind?"
+	theme_input = gets.chomp
+	theme_input
 end
 
 def get_list(key)
 	# Create array for the list
 	list = []
-=begin
-	#   Ask for preferred colors
-	puts "What colors does your client love?"
-	#   Ask for hated colors
-	puts "What colors does your client hate?"
-	#   Ask for special needs
-	puts "Does your client have any special needs?"
-=end
-
+	if key == "loved_colors" || key == "hated_colors"
+		preference = (key == "loved_colors") ? "love" : "hate"
+		puts "What colors does your client #{preference}? Type 'none' if there is none"
+		color_input = gets.chomp
+		while color_input != "none" && color_input != "done"
+			list.push(color_input)
+			puts "Any other color? Type 'none' or 'done' if you are done"
+			color_input = gets.chomp
+		end
+	elsif key == "special_needs"
+		puts "Are there any special needs that should be considered? Type 'none' if there is none"
+		needs_input = gets.chomp
+		while needs_input != "none" && needs_input != "done"
+			list.push(needs_input)
+			puts "Any other special needs? Type 'none' or 'done' if you are done"
+			needs_input = gets.chomp
+		end
+	end
+	(list.length != 0) ? list : nil
 end
 
 def get_budget
 	#   Ask for budget
-	puts "What is your client's budget"
+	begin
+		puts "What is your client's budget? (Value must be bigger than or equal to 0)"
+		budget_input = gets.chomp
+	end until validate_zero_and_up(budget_input)
+	budget_input.to_i
 end
 
 ###############################################################################################
@@ -93,8 +111,21 @@ end
 ###############################################################################################
 def create_client_profile(hash)
 	# Prompt for input
-
-	# Print Hash
+	client_profile = hash
+	client_profile[:name] = get_name
+	client_profile[:age] = get_age
+	client_profile[:children_count] = get_children_count
+	client_profile[:decor_theme] = get_decor_theme
+	client_profile[:loved_colors] = get_list("loved_colors")
+	client_profile[:hated_colors] = get_list("hated_colors")
+	client_profile[:special_needs] = get_list("special_needs")
+	client_profile[:budget] = get_budget
+	# Print & return Hash
+	puts "New client profile"
+	puts "########################"
+	client_profile.each do |key, value|
+		puts "##{key}: #{value}"
+	end
 end
 
 ###############################################################################################
@@ -102,13 +133,39 @@ end
 ###############################################################################################
 def update_client_profile(hash)
 	# Update a key if user wants
-	#   if any value is blank, print corresponding key in red.
-	#   if not, green.
 	## Ask for update
 	## Print keys
 	## Ask for new value
-
+	client_profile = hash
+	puts "Is there anything you want to update? Enter a key"
+	key = gets.chomp
+	case key
+	when "name"
+		client_profile[:name] = get_name
+	when "age"
+		client_profile[:age] = get_age
+	when "children_count"
+		client_profile[:children_count] = get_children_count
+	when "decor_theme"
+		client_profile[:decor_theme] = get_decor_theme
+	when "loved_colors"
+		client_profile[:loved_colors] = get_list("loved_colors")
+	when "hated_colors"
+		client_profile[:hated_colors] = get_list("hated_colors")
+	when "special_needs"
+		client_profile[:special_needs] = get_list("special_needs")
+	when "budget"
+		client_profile[:budget] = get_budget
+	else
+		puts ":#{key} doesn't exist in the hash"
+		update_client_profile(client_profile)
+	end
 	# Print updated Hash
+	puts "Updated client_profile"
+	puts "########################"
+	client_profile.each do |key, value|
+		puts "##{key}: #{value}"
+	end
 end	
 
 ###############################################################################################
@@ -128,11 +185,9 @@ design_details = {
   special_needs: nil,
   budget: nil 
 }
-# Lists
-	# Colors
-color_list = []
-	# Special needs
-special_needs_list = []
+design_details = create_client_profile(design_details)
+design_details = update_client_profile(design_details)
+
 
 ###############################################################################################
 ###############################################################################################
