@@ -6,58 +6,40 @@
 #  age => number
 #  number of children => number
 #  decor theme => string
-#  What colors do you love? => array || boolean
-#  What colors do you hate? => array || boolean
-#  Are there any special needs that should be considered? => array || boolean
+#  What colors do you love? => array
+#  What colors do you hate? => array
+#  Are there any special needs that should be considered? => array
 #  What's your budget? => number
 ###############################################################################################
 
 ###############################################################################################
 # Define helper methods
 ###############################################################################################
-# Colorize String methods
-def colorize(color,string)
-	case color
-	when "red"
-		color = 31
-	when "green"
-		color = 32
-	when "blue"	
-		color = 34
-	end
-
-  "\033[#{color}m#{string}\033[0m"
-end
-
-
 # Validation methods
-def validate_string_input(string)
-	# Check if user input is a string
-end
-
 def validate_number_input(string)
   # Check if user_input is a number
+  string == string.to_i.to_s ? true : false
 end
 
 def validate_boolean_input(string)
-	# Check if user_input is "none"
-end
-
-def validate_full_name(user_input)
-	# Check if full name has first and last name
-	# Check if full name consists of alphabets
+	input = string.downcase
+	if input == "yes"
+	  true
+	elsif input == "no"
+	  false
+	end
 end
 
 def validate_age(user_input)
 	# Check if age is between 15 - 100
-end
-
-def validate_decor_theme(user_input)
-	# Check if ...
+	age = user_input.to_i
+	(validate_number_input(user_input) && age >= 15 && age <= 100)
 end
 
 def validate_budget(user_input)
 	# Check if budget is more than or equal to 0
+	budget = user_input.to_i
+	(validate_number_input(user_input) && budget >= 0)
 end
 
 ###############################################################################################
@@ -146,6 +128,11 @@ design_details = {
   special_needs: nil,
   budget: nil 
 }
+# Lists
+	# Colors
+color_list = []
+	# Special needs
+special_needs_list = []
 
 ###############################################################################################
 ###############################################################################################
@@ -156,8 +143,6 @@ design_details = {
 ###############################################################################################
 # Sources
 ###############################################################################################
-# Changing the color of printed string on console
-# => https://stackoverflow.com/questions/1108767/terminal-color-in-ruby
 # CSS Colors
 # => https://www.w3schools.com/cssref/css_colors.asp
 # Lists of special needs
