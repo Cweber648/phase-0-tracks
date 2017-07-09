@@ -28,8 +28,6 @@ end
 
 # Release 1
 # Provide a user interface that lets a user enter a name and get a fake name back. Let the user do this repeatedly until they decide to quit by typing 'quit'. (They might just hit Enter to continue.)
-# Release 2
-# Use a data structure to store the fake names as they are entered. When the user exits the program, iterate through the data structure and print all of the data the user entered. A sentence like "Vussit Gimodoe is actually Felicia Torres" or "Felicia Torres is also known as Vussit Gimodoe" for each agent is fine.
 
 # Validate full name
 def validate_full_name(user_input)
@@ -43,16 +41,26 @@ def prompt_UI
 end
 
 def alias_generator_UI
+  alias_list = {}
+  puts "###############################################"
   real_name = prompt_UI{"What's the name of the spy?"}
   begin
     if validate_full_name(real_name)
       fake_name = alias_generator(real_name)
-      puts  "#{real_name}: #{fake_name}"
+      alias_list[real_name] = fake_name
     else
       puts "Not a valid name"
     end
     real_name = prompt_UI{"Any other spys? if not type 'quit' or press enter"}
   end until real_name == "quit" || real_name == ""
+  puts "###############################################"
+  alias_list
 end
 
+# Release 2
+# Use a data structure to store the fake names as they are entered. When the user exits the program, iterate through the data structure and print all of the data the user entered. A sentence like "Vussit Gimodoe is actually Felicia Torres" or "Felicia Torres is also known as Vussit Gimodoe" for each agent is fine.
+
+alias_generator_UI.each do |key, value|
+  puts "#{key} is also knwon as #{value}"
+end
 
