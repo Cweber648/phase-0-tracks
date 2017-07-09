@@ -40,7 +40,7 @@ def prompt_UI
   gets.chomp
 end
 
-def alias_generator_UI
+def alias_manager
   alias_list = {}
   puts "###############################################"
   real_name = prompt_UI{"What's the name of the spy?"}
@@ -60,7 +60,7 @@ end
 # Release 2
 # Use a data structure to store the fake names as they are entered. When the user exits the program, iterate through the data structure and print all of the data the user entered. A sentence like "Vussit Gimodoe is actually Felicia Torres" or "Felicia Torres is also known as Vussit Gimodoe" for each agent is fine.
 
-alias_generator_UI.each do |key, value|
+alias_manager.each do |key, value|
   puts "#{key} is also knwon as #{value}"
 end
 
