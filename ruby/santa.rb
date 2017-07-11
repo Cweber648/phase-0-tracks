@@ -1,7 +1,11 @@
 class Santa
 
-  def initialize
-    puts "Initializing Santa instance ..."
+  def initialize(gender, ethnicity, age = 0)
+    #puts "Initializing Santa instance ..."
+    @gender = gender
+    @ethnicity = ethnicity
+    @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+    @age = age
   end
   
   def speak
@@ -15,6 +19,14 @@ class Santa
 end
 
 # DRIVER CODE
-santa = Santa.new
-santa.speak
-santa.eat_milk_and_cookies("raison cookie")
+# Release 0
+#santa = Santa.new
+#santa.speak
+#santa.eat_milk_and_cookies("raison cookie")
+# Release 1
+santas = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+example_genders.length.times do |i|
+  santas << Santa.new(example_genders[i], example_ethnicities[i])
+end
