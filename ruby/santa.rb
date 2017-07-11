@@ -1,5 +1,7 @@
 class Santa
-
+  
+  attr_reader :age, :ethnicity
+  attr_accessor :gender
   def initialize(gender, ethnicity, age = 0)
     #puts "Initializing Santa instance ..."
     @gender = gender
@@ -24,18 +26,6 @@ class Santa
     @reindeer_ranking << @reindeer_ranking.delete_at(@reindeer_ranking.index(name))
   end
 
-  def gender=(gender)
-    @gender = gender
-  end
-
-  def age
-    @age
-  end
-  
-  def ethnicity
-    @ethnicity
-  end
-
 end
 
 # DRIVER CODE
@@ -53,7 +43,7 @@ end
 #santas.each do |santa|
 #  santa.speak
 #end
-# Release 2
+# Release 2 & 3
 santa = Santa.new("male", "white", 68)
 santa.celebrate_birthday
 puts santa.age
