@@ -44,9 +44,26 @@ end
 #  santa.speak
 #end
 # Release 2 & 3
-santa = Santa.new("male", "white", 68)
-santa.celebrate_birthday
-puts santa.age
-puts santa.ethnicity
-p santa.gender = "agender"
-p santa.get_mad_at("Dasher")
+#santa = Santa.new("male", "white", 68)
+#santa.celebrate_birthday
+#puts santa.age
+#puts santa.ethnicity
+#p santa.gender = "agender"
+#p santa.get_mad_at("Dasher")
+
+# Release 4: Build Many, Many Santas
+
+# Random gender, ethnicity, and age 
+def random_santa
+  age = Random.new
+  example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+  example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+  [example_genders.sample, example_ethnicities.sample, age.rand(140)]
+end
+
+# Create 100 Santas
+100.times do |i|
+  arg = random_santa
+  santa = Santa.new(arg[0], arg[1], arg[2])
+  puts "#{i + 1}: #{santa.age} years old, #{santa.ethnicity}, #{santa.gender} santa"
+end
