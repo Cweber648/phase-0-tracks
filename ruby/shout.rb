@@ -9,7 +9,7 @@ module Shout
   end
 
   # DRIVER CODE
-  puts "Yell Angryily: #{self.yell_angrily('loud noises')}"
-  puts "Yell Happily: #{self.yell_happily('loud noises')}"
+  #puts "Yell Angryily: #{self.yell_angrily('loud noises')}"
+  #puts "Yell Happily: #{self.yell_happily('loud noises')}"
 
 end
