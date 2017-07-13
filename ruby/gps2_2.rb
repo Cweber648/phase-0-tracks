@@ -1,3 +1,5 @@
+#Pseudocode
+
 # Release 0
 # Method to create a list
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
@@ -41,17 +43,20 @@
   # no output
 
 # Release 1
+
+DEFAULT_QUANTITY = 0
+
 def create_list(items)
   key_item_list= items.split(" ")
   item_list = {}
   key_item_list.each do |key|
-    item_list[key] = 0
+    item_list[key] = DEFAULT_QUANTITY
   end 
   print_list(item_list)
   item_list
 end
 
-def add_item(list, item, quantity = 0)
+def add_item(list, item, quantity = DEFAULT_QUANTITY)
   list[item] = quantity
 end
 
@@ -70,28 +75,21 @@ def print_list(list)
 end
 
 # DRIVER CODE
-list = create_list("carrots apples cereal pizza")
-add_item(list, "banana", 5)
-p list
-remove_item(list, "banana")
-p list
-update_quantity(list, "banana", 5)
-p list
+#list = create_list("carrots apples cereal pizza")
+#p add_item(list, "banana", 5)
+#p list
+#p remove_item(list, "banana")
+#p update_quantity(list, "banana", 5)
 
 
+# Release 2
 
+list = create_list("bananas potatos")
+p add_item(list, "lemonade", 2)
+p add_item(list, "tomatoes", 3)
+p add_item(list, "onions", 1)
+p add_item(list, "ice cream", 4)
+p remove_item(list, "lemonade")
+update_quantity(list, "ice cream", 1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print_list(list)
