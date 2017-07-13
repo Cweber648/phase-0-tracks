@@ -107,3 +107,5 @@ name_length.times { |name_position| puts "#{name_array[name_position]} is also k
 #if the next character is a capital vowel put the next vowel.upcase
 # if the next character is a capital consonant put the next consonant.up
 
+
+#added text for code review. forgot to tag
