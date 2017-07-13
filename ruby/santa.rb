@@ -1,4 +1,7 @@
 class Santa
+  attr_reader :ethnicity, :gender
+  attr_accessor :gender , :ethnicity
+  att
 
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance ..."
@@ -28,8 +31,12 @@ class Santa
     @reindeer_ranking << reindeer
   end
 
-  def ethnicity=(new_ethnicity)
+   def ethnicity=(new_ethnicity)
     @ethnicity = new_ethnicity
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
   end
 
   def gender
@@ -61,4 +68,11 @@ ethnicities = ["white", "African-American", "Latino","Asian", "Klingon","N/A"]
 genders.length.times do |i|
   santas << Santa.new(genders[i], ethnicities[i])
 end
-p santas
+
+puts "You are a #{santa_con.gender}, #{santa_con.ethnicity}, Pleasure to have you here."
+
+santa_con.ethnicity = "We are just Klingons"
+puts "#{santa_con.ethnicity}"
+
+santa_con.gender = "We actually dont have genders, Just Klingons"
+puts "#{santa_con.gender}"
