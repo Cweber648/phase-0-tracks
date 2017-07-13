@@ -1,7 +1,6 @@
 class Santa
-  attr_reader :ethnicity, :gender
-  attr_accessor :gender , :ethnicity
-  att
+  attr_reader :ethnicity, :gender, :age
+  attr_accessor :gender , :ethnicity, :age
 
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance ..."
@@ -30,23 +29,6 @@ class Santa
     r = @reindeer_ranking.delete_at(i)
     @reindeer_ranking << reindeer
   end
-
-   def ethnicity=(new_ethnicity)
-    @ethnicity = new_ethnicity
-  end
-
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-
-  def gender
-    @gender
-  end
-
-  def ethnicity
-    @ethnicity
-  end
-
 end
 
 santa_con = Santa.new("Male","Klingon")
@@ -59,16 +41,6 @@ p santa_con
 puts "What Does SANTA!! Say??"
 santa_con.speak
 
-santas = []
-
-genders = ["Female", "Male", "bigender","gender fluid", "N/A"]
-
-ethnicities = ["white", "African-American", "Latino","Asian", "Klingon","N/A"]
-
-genders.length.times do |i|
-  santas << Santa.new(genders[i], ethnicities[i])
-end
-
 puts "You are a #{santa_con.gender}, #{santa_con.ethnicity}, Pleasure to have you here."
 
 santa_con.ethnicity = "We are just Klingons"
@@ -76,3 +48,28 @@ puts "#{santa_con.ethnicity}"
 
 santa_con.gender = "We actually dont have genders, Just Klingons"
 puts "#{santa_con.gender}"
+
+santas = []
+
+genders = ["Female", "Male", "bigender","gender fluid","Agender", "genderless","Non-Binary",]
+
+ethnicities = ["Bajoran", "Betazoid","Cardassian", "Ferengi‎" "hybrid","Klingon", "Romulan", "Vulcan", "Swarm", "Andorians","Tholian",""]
+
+# santa_new = Santa.new(@gender,@ethnicity)
+# santa_new.gender = genders.sample
+# santa_new.ethnicity = ethnicities.sample
+# santa_new.age = rand 0..140
+# puts "We have a #{santa_new.age} #{santa_new.gender} #{santa_new.ethnicity} Santa"
+
+ 10.times do
+   santas << Santa.new(@gender,@ethnicity)
+ end
+ santas.each do |gender, ethnicity|
+    gender = genders.sample
+    ethnicity = ethnicities.sample
+    age = rand 0..140
+   puts "We have a #{age} #{gender} #{ethnicity} Santa"
+ end
+# genders.length.times do |i|
+#   santas << Santa.new(genders[i], ethnicities[i])
+# end
