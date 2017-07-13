@@ -40,3 +40,58 @@
 # output:
   # no output
 
+# Release 1
+def create_list(items)
+  key_item_list= items.split(" ")
+  item_list = {}
+  key_item_list.each do |key|
+    item_list[key] = 0
+  end 
+  print_list(item_list)
+  item_list
+end
+
+def add_item(list, item, quantity = 0)
+  list[item] = quantity
+  list
+end
+
+def remove_item(list, item)
+  list.delete(item)
+  list
+end
+
+def update_quantity(list, item, quantity)
+  add_item(list, item, quantity)
+end
+
+def print_list(list)
+  list.each do |key, value|
+    puts "#{key}: #{value}"
+  end
+end
+
+# DRIVER CODE
+list = create_list("carrots apples cereal pizza")
+p add_item(list, "banana", 5)
+p list
+p remove_item(list, "banana")
+p update_quantity(list, "banana", 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
