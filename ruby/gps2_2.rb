@@ -53,12 +53,10 @@ end
 
 def add_item(list, item, quantity = 0)
   list[item] = quantity
-  list
 end
 
 def remove_item(list, item)
   list.delete(item)
-  list
 end
 
 def update_quantity(list, item, quantity)
@@ -73,10 +71,12 @@ end
 
 # DRIVER CODE
 list = create_list("carrots apples cereal pizza")
-p add_item(list, "banana", 5)
+add_item(list, "banana", 5)
 p list
-p remove_item(list, "banana")
-p update_quantity(list, "banana", 5)
+remove_item(list, "banana")
+p list
+update_quantity(list, "banana", 5)
+p list
 
 
 
