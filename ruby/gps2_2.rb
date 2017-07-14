@@ -93,3 +93,17 @@ p remove_item(list, "lemonade")
 update_quantity(list, "ice cream", 1)
 
 print_list(list)
+
+# Release 4: Reflect
+# What did you learn about pseudocode from working on this challenge?
+# - Not using keywords of specific language, and specifying input and output.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+# - If array was used, each element in the list array would be an array containing item and quantity. It would be difficult to access specific element.
+# What does a method return?
+# - Last statement inside of a method or statement after return keyword.
+# What kind of things can you pass into methods as arguments?
+# - string, number, array, hash, and block.
+# How can you pass information between methods?
+# - using arguments and return value.
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+# - I got an idea how to pseudocode efficiently.
