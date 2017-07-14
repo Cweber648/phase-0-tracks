@@ -1,15 +1,30 @@
 module Shout
 
-  def self.yell_angrily(words)
+  def yell_angrily(words)
     "#{words.upcase}!!! :("
   end
 
-  def self.yell_happily(words)
+  def yell_happily(words)
     "#{words.upcase}!!! :)"
   end
 
-  # DRIVER CODE
-  #puts "Yell Angryily: #{self.yell_angrily('loud noises')}"
-  #puts "Yell Happily: #{self.yell_happily('loud noises')}"
+end
+
+class Drill_Sergeant
+  
+  include Shout
 
 end
+
+class Soldier
+
+  include Shout
+  
+end
+
+# DRIVER CODE
+taylor = Drill_Sergeant.new
+gump = Soldier.new
+puts taylor.yell_angrily("what are you smiling at?")
+puts gump.yell_happily("nothing, sir")
+
