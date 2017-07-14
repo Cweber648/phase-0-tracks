@@ -27,4 +27,6 @@ taylor = Drill_Sergeant.new
 gump = Soldier.new
 puts taylor.yell_angrily("what are you smiling at?")
 puts gump.yell_happily("nothing, sir")
+puts taylor.yell_happily("what are you smiling at?")
+puts gump.yell_angrily("nothing, sir")
 
