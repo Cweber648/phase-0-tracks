@@ -1,0 +1,36 @@
+Word-Guessing Game
+- One user can enter a word (or phrase, if you would like your game to support that), and another user attempts to guess the word.
+- Guesses are limited, and the number of guesses available is related to the length of the word.
+- Repeated guesses do not count against the user.
+- The guessing player receives continual feedback on the current state of the word. So if the secret word is "unicorn", the user will start out seeing something like "_ _ _ _ _ _ _", which would become "_ _ _ c _ _ _" after the user enters a guess of "c".
+- The user should get a congratulatory message if they win, and a taunting message if they lose.
+
+Pseudocode
+
+Method to create a word/pharse
+  input: string
+  steps:
+    split string into letters
+    iterate through splited string
+      IF it's a letter, _
+      IF It's a blnank, keep it blank
+  output:
+    splited string and replaced and splited string
+
+Method to update guesses 
+  input: letter or string
+  steps:
+    IF input is a string, check if it equals the word/phrase
+    IF input is a letter, check if it's in the word/phrase
+      update the string replaced with _
+    substract 1 from guesses
+  output:
+
+Method to congratulate or taunt
+  input:
+  steps:
+    If player 2 guesses the word/phrase within guess limit
+      congratulate player 2
+    If not
+      taunt player 2
+  output:
