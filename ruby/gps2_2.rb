@@ -1,4 +1,4 @@
-# Method to create a list
+# Method to create a
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 # steps:
   # [fill in any steps here]
