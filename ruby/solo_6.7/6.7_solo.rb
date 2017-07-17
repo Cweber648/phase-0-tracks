@@ -59,7 +59,7 @@ attr_accessor :word , :guess_count , :is_over , :word_array , :guess_word , :cor
       end
       end
       index += 1
-   end
+    end
   end
 
 #Method needed for the correct guess
@@ -106,7 +106,7 @@ attr_accessor :word , :guess_count , :is_over , :word_array , :guess_word , :cor
     if @guess_count >= @word_length && !@is_over
       @is_over = true
       puts "You lost, I can't believe you couldn't guess a word as easy as #{@word.upcase}!!!"
-   end
+    end
   end
 
 end
