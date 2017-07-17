@@ -38,27 +38,27 @@ attr_accessor :word , :guess_count , :is_over , :word_array , :guess_word , :cor
 #input = letter and index
 #we are setting if the user guesses the word correct, we want to find the index of that word in the array and replace it with the letter.
   def user_word(word)
-   @guess_word = "#{word}".split('')
-   @guess_word.map! do |replace_letter|
+    @guess_word = "#{word}".split('')
+    @guess_word.map! do |replace_letter|
       replace_letter = '-'
-   end
+    end
   end
 
 #method for the user_guess
 #input - when the user inputs a correct letter. we want to replace the "- " with the correct letter at the index of the "-"
 
   def user_guess(letter)
-   index = 0
-   while index < @word_length
-     if @word_array[index] == letter
+    index = 0
+    while index < @word_length
+      if @word_array[index] == letter
       if @guess_word[index] == "-"
          @guess_word[index] = letter
          @correct_letter = 1
       else
-        @reused_letter = true
+         @reused_letter = true
       end
-    end
-    index += 1
+      end
+      index += 1
    end
   end
 
@@ -103,7 +103,7 @@ attr_accessor :word , :guess_count , :is_over , :word_array , :guess_word , :cor
 #Steps- need and if statement, and is_over set to true
 #when the word is guessed wrong. guesses are larger than the word length. puts "bad message"
   def game_over
-   if @guess_count >= @word_length && !@is_over
+    if @guess_count >= @word_length && !@is_over
       @is_over = true
       puts "You lost, I can't believe you couldn't guess a word as easy as #{@word.upcase}!!!"
    end
