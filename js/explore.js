@@ -1,7 +1,7 @@
 // Write a Function. be descriptive to what it does, Takes an argument that is a string.
-// we want to take that argument(string) and reverse it
+// we want to take that argument and reverse it
 // reversestring.;
-// split the word broken into an array.
+// split the word, broken into an array.
 // Reverse the array.
 // Join the array back together.
 // Create a variable for the reversed word to be stored in.
@@ -14,7 +14,7 @@ function wordReverse(word) {
   console.log(word.split("").reverse().join(""))
   var reverseWord = word.split("").reverse().join("")
 if (reverseWord = word) {
-   console.log(reverseWord)
+   console.log(word)
 }
 }
 
