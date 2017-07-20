@@ -92,3 +92,8 @@ end
 
 #=======================================================================
 # Reflection Section
+# 1. Difference between string as a key and symbol as a key
+# 2. require_relative looks for file based on current directory
+# 3. Using iterator methods or loops
+# 4. My pair pointed out that parameters weren't necessary
+# 5. I got side tracked and looked into the difference between private and protected. After attending the office hour, I now have solid understanding of the difference.
