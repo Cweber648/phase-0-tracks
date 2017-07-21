@@ -39,5 +39,12 @@ function keyValueMatch(a, b) {
 }
 
 // DRIVER CODE
-console.log(keyValueMatch({name: "Steven", age: 54}, {name: "Tamir", age: 54})); // true
-console.log(keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3})); // true 
+//console.log(keyValueMatch({name: "Steven", age: 54}, {name: "Tamir", age: 54})); // true
+//console.log(keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3})); // true 
+
+// Generate Random Test Data
+// input: integer
+// steps:
+//  generate a random string that has a length between 1 to 10
+//  repeat as many times as the input.
+// output: list of strings
