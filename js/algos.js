@@ -16,7 +16,7 @@ function longest(words) {
 }
 
 // DRIVER CODE
-console.log(longest(["long phrase","longest phrase","longer phrase"]));
+//console.log(longest(["long phrase","longest phrase","longer phrase"]));
 
 // Find a Key-Value Match
 // input: two key-value pair
@@ -25,3 +25,19 @@ console.log(longest(["long phrase","longest phrase","longer phrase"]));
 //  check if second key-value pair has any key in the first one
 //  if there is a matching key, check if the they have same value
 // output: true or false
+function keyValueMatch(a, b) {
+  var keysA = Object.keys(a);
+  var keysB = Object.keys(b);
+  var key;
+  for (var i = 0; i < keysB.length; i++) {
+    key = keysB[i];
+    if (a[key] == b[key]) {
+      return true;
+    }
+  }
+  return false; 
+}
+
+// DRIVER CODE
+console.log(keyValueMatch({name: "Steven", age: 54}, {name: "Tamir", age: 54})); // true
+console.log(keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3})); // true 
