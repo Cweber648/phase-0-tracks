@@ -63,4 +63,13 @@ function randomWords(number) {
   return words;
 }
 
-console.log(randomWords(5));
+// DRIVER CODE
+var words = [];
+var randomNumber;
+for (var i = 0; i < 10; i++) {
+  randomNumber = Math.ceil(Math.random() * 5) + 2;
+  words = randomWords(randomNumber);
+  console.log("Generated Array: \n"  + words);
+  console.log("Longest Word: \n" + longest(words)); 
+  console.log("--------------------------");
+}
