@@ -48,3 +48,19 @@ function keyValueMatch(a, b) {
 //  generate a random string that has a length between 1 to 10
 //  repeat as many times as the input.
 // output: list of strings
+function randomWords(number) {
+  var words = [];
+  var randomWord, randomLength, randomCharCode;
+  for (var i = 0; i < number; i++) {
+    randomLength = Math.ceil(Math.random() * 10);
+    randomWord = "";
+    for (var j = 0; j < randomLength; j++) {
+      randomCharCode = Math.ceil(Math.random() * 26) + 64;
+      randomWord += String.fromCharCode(randomCharCode);
+    }
+    words.push(randomWord);
+  }
+  return words;
+}
+
+console.log(randomWords(5));
