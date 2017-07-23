@@ -1,3 +1,4 @@
+# RELEASE 2
 # Display the information in one table (either table is fine).
 sqlite> SELECT * FROM customers;
 1|Cece Colin
@@ -40,3 +41,51 @@ sqlite> SELECT * FROM orders;
 3|2|35419|2017-07-21
 4|1|5079|2017-07-20
 5|3|5107|2017-07-20
+###########################################################################
+# RELEASE 3
+#   I added more data to both tables to try outter joins.
+sqlite> SELECT * FROM customers;
+1|Cece Colin
+2|Kole Gordon
+3|Gwyneth Bailey
+4|Pravin Zelenka
+5|Sumeet Assenberg
+6|Ankur Maguire
+sqlite> SELECT * FROM orders;
+1|3|19082|2017-07-23
+3|2|35419|2017-07-21
+4|1|5079|2017-07-20
+5|3|5107|2017-07-20
+6|7|14056|2017-07-16
+7|10|14056|2017-07-13
+
+# INNER JOIN
+#   Release 2.4
+
+# LEFT JOIN
+sqlite> SELECT customers.full_name, orders.total_price, orders.order_date
+   ...> FROM customers
+   ...> LEFT JOIN orders
+   ...> ON customers.id = orders.customer_id;
+Cece Colin|5079|2017-07-20
+Kole Gordon|35419|2017-07-21
+Gwyneth Bailey|5107|2017-07-20
+Gwyneth Bailey|19082|2017-07-23
+Pravin Zelenka||
+Sumeet Assenberg||
+Ankur Maguire||
+
+# RIGHT JOIN and FULL JOIN is not supported on SQLite3
+# RIGHT JOIN
+sqlite> SELECT customers.full_name, orders.total_price, orders.order_date
+   ...> FROM customers
+   ...> RIGHT JOIN orders
+   ...> ON customers.id = orders.customer_id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+# FULL JOIN
+sqlite> SELECT customers.full_name, orders.total_price, orders.order_date
+   ...> FROM customers
+   ...> FULL JOIN orders
+   ...> ON customers.id = orders.customer_id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
