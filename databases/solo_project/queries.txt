@@ -1,9 +1,42 @@
 # Display the information in one table (either table is fine).
+sqlite> SELECT * FROM customers;
+1|Cece Colin
+2|Kole Gordon
+3|Gwyneth Baylee
 
 # Update an item that meets some condition (you can choose a condition that makes sense).
+sqlite> UPDATE customers
+   ...> SET full_name = "Gwyneth Bailey"
+   ...> WHERE full_name = "Gwyneth Baylee";
+sqlite> SELECT * FROM customers;
+1|Cece Colin
+2|Kole Gordon
+3|Gwyneth Bailey
 
 # Display the information in both tables using one query.
+sqlite> SELECT * FROM customers, orders
+   ...> WHERE customers.id = orders.customer_id;
+3|Gwyneth Bailey|1|3|19082|2017-07-23
+1|Cece Colin|2|1|2759|2017-07-22
+2|Kole Gordon|3|2|35419|2017-07-21
+1|Cece Colin|4|1|5079|2017-07-20
+3|Gwyneth Bailey|5|3|5107|2017-07-20
 
 # Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+sqlite> SELECT customers.full_name, orders.total_price, orders.order_date
+   ...> FROM customers JOIN orders
+   ...> ON customers.id = orders.customer_id;
+Gwyneth Bailey|19082|2017-07-23
+Cece Colin|2759|2017-07-22
+Kole Gordon|35419|2017-07-21
+Cece Colin|5079|2017-07-20
+Gwyneth Bailey|5107|2017-07-20
 
 # Delete an item that meets some condition (you can choose a condition that makes sense).
+sqlite> DELETE FROM orders
+   ...> WHERE total_price < 5000;
+sqlite> SELECT * FROM orders;
+1|3|19082|2017-07-23
+3|2|35419|2017-07-21
+4|1|5079|2017-07-20
+5|3|5107|2017-07-20
