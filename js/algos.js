@@ -14,6 +14,18 @@
 // output will be true or false pending if they have one thing in common
 // steps. If else statement for both parameters set.
 
+// function takes integer for length, returns random array of string that is the length of the integer.
+// function takes arument for length
+// need to create variables. and an blank array
+// math keyword is what is used to generate random numbers.
+// input is going to be the length of the word (or number)
+// output is going to be the the array but with the amount of strings = to the number
+
+// Function to generate the random length of strings.
+// put in all valid characters.
+// we want to put in the text of the random numbers into the array. Until we == whatever number we generate.
+// print to console.
+
 
 function longest_word(word_arrays){
   var lgth = word_arrays[0].length;
@@ -47,6 +59,29 @@ function compare_cities(person1,person2){
     }
 }
 
+function create_random(length){
+  var random_number = 0;
+  var random_words = [];
+
+  for (var i = 0; i < length; i++)
+  {
+    random_number = Math.floor(Math.random() * 10);
+    random_words.push(makeid(random_number));
+  }
+  console.log(random_words)
+  return random_words;
+}
+
+function makeid(random_length) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i <= random_length; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
 
 var cities = ['Bend', 'Eugene', 'Portland', 'Ashland'];
 var lgth = 0;
@@ -55,8 +90,10 @@ var longest;
 var person1 = new person("Bend", "California");
 var person2 = new person("Bend", "Oregon");
 
+
+
 console.log(person1);
 console.log(person2);
 console.log(compare_cities(person1,person2));
 console.log(longest_word(cities));
-
+console.log(longest_word(create_random(10)));
