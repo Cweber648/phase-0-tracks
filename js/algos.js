@@ -97,3 +97,6 @@ console.log(person2);
 console.log(compare_cities(person1,person2));
 console.log(longest_word(cities));
 console.log(longest_word(create_random(10)));
+
+
+// test
