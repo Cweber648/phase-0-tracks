@@ -1,3 +1,4 @@
+
 // function for finding longest word in an array of words.
 //Function should take a word in the array as an argument
 // Loop through the array.
@@ -100,3 +101,6 @@ console.log(longest_word(create_random(10)));
 
 
 // test
+=======
+=======
+// Writing a function.
