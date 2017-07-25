@@ -1,0 +1,59 @@
+body   {
+  background-image: url("http://xaharts.org/funny/i/gitopuss/github-octocat_yes-we-code.jpg");
+}
+
+section {
+  column-count:2;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+header {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 3px double black;
+  padding: 10px;
+  font-family: Garamond;
+  background-color: rgba(250, 235, 215, 0.80);
+}
+
+.column-1, .column-2 {
+  /* background-color:blue; */
+  padding: 10px;
+  border: 3px
+}
+
+article   {
+  background: rgba(250, 235, 215, 0.80);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: solid black;
+}
+
+footer {
+  background: rgba(250, 235, 215, 0.80);
+  text-align: center;
+  padding:10px;
+}
+
+/* link details */
+
+a:link {
+  color:#2C6C7F;
+}
+
+a:visited {
+  color:#115468;
+}
+
+a:hover{
+  color:#F8A444;
+}
+
+a:active{
+  color:white;
+}
