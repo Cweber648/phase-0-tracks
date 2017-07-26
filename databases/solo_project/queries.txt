@@ -1,0 +1,44 @@
+solo_project (solo) :> sqlite3 got.db
+SQLite version 3.16.0 2016-11-04 19:09:39
+Enter ".help" for usage hints.
+sqlite>
+sqlite> CREATE TABLE locations(
+   ...> id INTEGER PRIMARY KEY,
+   ...> city VARCHAR(255),
+   ...> rulers_of VARCHAR(255)
+   ...> );
+sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Winterfell", "The North);
+sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Casterly Rock", "The Westernlands");
+sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Eyrie", "The Vale");
+sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Riverrun", "Riverlands");
+sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Storms End", "The Stormlands");
+sqlite> INSERT INTO LOCATIONS (city, rulers_of) VALUES ("Highgarden", "The Reach");
+sqlite> INSERT INTO LOCATIONS (city, rulers_of) VALUES ("Dorne", "Dorne");
+
+sqlite> SELECT * FROM locations;
+1|Casterly Rock|The Westernlands
+2|Eyrie|The Vale
+3|Riverrun|Riverlands
+4|Storms End|The Stormlands
+5|Highgarden|The Reach
+6|Dorne|Dorne
+sqlite>
+
+sqlite> CREATE TABLE houses(
+   ...> id INTEGER PRIMARY KEY,
+   ...> house VARCHAR(255),
+   ...> people VARCHAR(255),
+   ...> alive BOOTLEAN,
+   ...> location_id INT,
+   ...> FOREIGN KEY (location_id) REFERENCES locations(id)
+   ...> );
+
+
+sqlite> CREATE TABLE players(
+   ...> name VARCHAR(255),
+   ...> number INT,
+   ...> team_id INT,
+   ...> FOREIGN KEY (team_id) REFERENCES teams(id)
+   ...> );
+sqlite> SELECT * FROM teams
+sqlite> INSERT INTO players (name, number, team_id) VALUES ("Paula Bunion", 45, 1);
