@@ -2,6 +2,10 @@
 *****Display the information in one table (either table is fine).******
 
 
+sqlite> .tables
+houses     locations
+
+
 sqlite> SELECT * FROM locations
    ...> ;
 1|Winterfell|The North
@@ -37,8 +41,6 @@ sqlite> SELECT * FROM houses
 20|Martell|Oberyn|false|7
 21|Martell|Ellaria Sand|true|7
 
-sqlite> .tables
-houses     locations
 
 sqlite> SELECT * from houses WHERE alive ="false";
 4|Stark|Ned|false|1
