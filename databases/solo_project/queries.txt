@@ -1,0 +1,412 @@
+
+*****Display the information in one table (either table is fine).******
+
+
+sqlite> .tables
+houses     locations
+
+
+sqlite> SELECT * FROM locations
+   ...> ;
+1|Winterfell|The North
+2|Casterly Rock|The Westernlands
+3|Eyrie|The Vale
+4|Riverrun|Riverlands
+5|Storms End|The Stormlands
+6|Highgarden|The Reach
+7|Dorne|Dorne
+
+
+sqlite> SELECT * FROM houses
+   ...> ;
+1|Stark|Jon Snow (King of the north)|true|1
+2|Stark|Sansa|true|1
+3|Stark|Arya|true|1
+4|Stark|Ned|false|1
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|true|2
+9|Arryn|Peter Baelish (little finger)|true|3
+10|Arryn|Robin Arryn|true|3
+11|Tully|Roslin|true|4
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+15|Baratheon|Shireen|false|5
+16|Tyrell|Lady Tyrell|true|6
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
+21|Martell|Ellaria Sand|true|7
+
+
+sqlite> SELECT * from houses WHERE alive ="false";
+4|Stark|Ned|false|1
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+15|Baratheon|Shireen|false|5
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
+sqlite>
+
+*****Update an item that meets some condition (you can choose a condition that makes sense).*******
+
+
+sqlite> UPDATE houses SET alive="false" WHERE people="Tywin";
+
+sqlite> SELECT * FROM houses WHERE house="Lannister";
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|false|2
+
+
+
+****Display BOTH TABLES USING ONE QUERY.******
+
+sqlite> SELECT * FROM houses, locations WHERE houses.location_id = locations.id
+   ...> ;
+1|Stark|Jon Snow (King of the north)|true|1|1|Winterfell|The North
+2|Stark|Sansa|true|1|1|Winterfell|The North
+3|Stark|Arya|true|1|1|Winterfell|The North
+4|Stark|Ned|false|1|1|Winterfell|The North
+5|Lannister|Ser Jaime|true|2|2|Casterly Rock|The Westernlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|2|Casterly Rock|The Westernlands
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|2|Casterly Rock|The Westernlands
+8|Lannister|Tywin|false|2|2|Casterly Rock|The Westernlands
+9|Arryn|Peter Baelish (little finger)|true|3|3|Eyrie|The Vale
+10|Arryn|Robin Arryn|true|3|3|Eyrie|The Vale
+11|Tully|Roslin|true|4|4|Riverrun|Riverlands
+12|Tully|Brynden|false|4|4|Riverrun|Riverlands
+13|Baratheon|Stannis (The One True King)|false|5|5|Storms End|The Stormlands
+14|Baratheon|Tommen|false|5|5|Storms End|The Stormlands
+15|Baratheon|Shireen|false|5|5|Storms End|The Stormlands
+16|Tyrell|Lady Tyrell|true|6|6|Highgarden|The Reach
+17|Tyrell|Loras|false|6|6|Highgarden|The Reach
+18|Tyrell|Marjorie|false|6|6|Highgarden|The Reach
+19|Martell|Doran|false|7|7|Dorne|Dorne
+20|Martell|Oberyn|false|7|7|Dorne|Dorne
+21|Martell|Ellaria Sand|true|7|7|Dorne|Dorne
+
+
+
+
+*****Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.*******
+
+
+sqlite> SELECT houses.people, locations.city FROM houses JOIN locations ON houses.location_id = locations.id;
+Jon Snow (King of the north)|Winterfell
+Sansa|Winterfell
+Arya|Winterfell
+Ned|Winterfell
+Ser Jaime|Casterly Rock
+Cersei (Queen of Westeros)|Casterly Rock
+Tyrion (Hand of the Queen Daenerys|Casterly Rock
+Tywin|Casterly Rock
+Peter Baelish (little finger)|Eyrie
+Robin Arryn|Eyrie
+Roslin|Riverrun
+Brynden|Riverrun
+Stannis (The One True King)|Storms End
+Tommen|Storms End
+Shireen|Storms End
+Lady Tyrell|Highgarden
+Loras|Highgarden
+Marjorie|Highgarden
+Doran|Dorne
+Oberyn|Dorne
+Ellaria Sand|Dorne
+
+
+
+
+*****Delete an item that meets some condition (you can choose a condition that makes sense).*****(15|Baratheon|Shireen|false|5)
+
+
+sqlite> DELETE FROM HOUSES WHERE ID = 15;
+sqlite> SELECT * FROM houses;
+1|Stark|Jon Snow (King of the north)|true|1
+2|Stark|Sansa|true|1
+3|Stark|Arya|true|1
+4|Stark|Ned|false|1
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|false|2
+9|Arryn|Peter Baelish (little finger)|true|3
+10|Arryn|Robin Arryn|true|3
+11|Tully|Roslin|true|4
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+16|Tyrell|Lady Tyrell|true|6
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
+21|Martell|Ellaria Sand|true|7
+sqlite>
+
+********Inner Join*********
+
+sqlite> SELECT * FROM houses INNER JOIN locations on locations.id = houses.id;
+1|Stark|Jon Snow (King of the north)|true|1|1|Winterfell|The North
+2|Stark|Sansa|true|1|2|Casterly Rock|The Westernlands
+3|Stark|Arya|true|1|3|Eyrie|The Vale
+4|Stark|Ned|false|1|4|Riverrun|Riverlands
+5|Lannister|Ser Jaime|true|2|5|Storms End|The Stormlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|6|Highgarden|The Reach
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|7|Dorne|Dorne
+
+
+****** LEFT OUTER JOIN ********
+
+sqlite> SELECT house, people FROM houses LEFT OUTER JOIN locations on houses.location_id = locations.id;
+Stark|Jon Snow (King of the north)
+Stark|Sansa
+Stark|Arya
+Stark|Ned
+Lannister|Ser Jaime
+Lannister|Cersei (Queen of Westeros)
+Lannister|Tyrion (Hand of the Queen Daenerys
+Lannister|Tywin
+Arryn|Peter Baelish (little finger)
+Arryn|Robin Arryn
+Tully|Roslin
+Tully|Brynden
+Baratheon|Stannis (The One True King)
+Baratheon|Tommen
+Tyrell|Lady Tyrell
+Tyrell|Loras
+Tyrell|Marjorie
+Martell|Doran
+Martell|Oberyn
+Martell|Ellaria Sand
+sqlite>
+
+
+*************Cross Join************
+
+sqlite> SELECT * FROM houses CROSS JOIN locations;
+1|Stark|Jon Snow (King of the north)|true|1|1|Winterfell|The North
+1|Stark|Jon Snow (King of the north)|true|1|2|Casterly Rock|The Westernlands
+1|Stark|Jon Snow (King of the north)|true|1|3|Eyrie|The Vale
+1|Stark|Jon Snow (King of the north)|true|1|4|Riverrun|Riverlands
+1|Stark|Jon Snow (King of the north)|true|1|5|Storms End|The Stormlands
+1|Stark|Jon Snow (King of the north)|true|1|6|Highgarden|The Reach
+1|Stark|Jon Snow (King of the north)|true|1|7|Dorne|Dorne
+2|Stark|Sansa|true|1|1|Winterfell|The North
+2|Stark|Sansa|true|1|2|Casterly Rock|The Westernlands
+2|Stark|Sansa|true|1|3|Eyrie|The Vale
+2|Stark|Sansa|true|1|4|Riverrun|Riverlands
+2|Stark|Sansa|true|1|5|Storms End|The Stormlands
+2|Stark|Sansa|true|1|6|Highgarden|The Reach
+2|Stark|Sansa|true|1|7|Dorne|Dorne
+3|Stark|Arya|true|1|1|Winterfell|The North
+3|Stark|Arya|true|1|2|Casterly Rock|The Westernlands
+3|Stark|Arya|true|1|3|Eyrie|The Vale
+3|Stark|Arya|true|1|4|Riverrun|Riverlands
+3|Stark|Arya|true|1|5|Storms End|The Stormlands
+3|Stark|Arya|true|1|6|Highgarden|The Reach
+3|Stark|Arya|true|1|7|Dorne|Dorne
+4|Stark|Ned|false|1|1|Winterfell|The North
+4|Stark|Ned|false|1|2|Casterly Rock|The Westernlands
+4|Stark|Ned|false|1|3|Eyrie|The Vale
+4|Stark|Ned|false|1|4|Riverrun|Riverlands
+4|Stark|Ned|false|1|5|Storms End|The Stormlands
+4|Stark|Ned|false|1|6|Highgarden|The Reach
+4|Stark|Ned|false|1|7|Dorne|Dorne
+5|Lannister|Ser Jaime|true|2|1|Winterfell|The North
+5|Lannister|Ser Jaime|true|2|2|Casterly Rock|The Westernlands
+5|Lannister|Ser Jaime|true|2|3|Eyrie|The Vale
+5|Lannister|Ser Jaime|true|2|4|Riverrun|Riverlands
+5|Lannister|Ser Jaime|true|2|5|Storms End|The Stormlands
+5|Lannister|Ser Jaime|true|2|6|Highgarden|The Reach
+5|Lannister|Ser Jaime|true|2|7|Dorne|Dorne
+6|Lannister|Cersei (Queen of Westeros)|true|2|1|Winterfell|The North
+6|Lannister|Cersei (Queen of Westeros)|true|2|2|Casterly Rock|The Westernlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|3|Eyrie|The Vale
+6|Lannister|Cersei (Queen of Westeros)|true|2|4|Riverrun|Riverlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|5|Storms End|The Stormlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|6|Highgarden|The Reach
+6|Lannister|Cersei (Queen of Westeros)|true|2|7|Dorne|Dorne
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|1|Winterfell|The North
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|2|Casterly Rock|The Westernlands
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|3|Eyrie|The Vale
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|4|Riverrun|Riverlands
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|5|Storms End|The Stormlands
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|6|Highgarden|The Reach
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|7|Dorne|Dorne
+8|Lannister|Tywin|false|2|1|Winterfell|The North
+8|Lannister|Tywin|false|2|2|Casterly Rock|The Westernlands
+8|Lannister|Tywin|false|2|3|Eyrie|The Vale
+8|Lannister|Tywin|false|2|4|Riverrun|Riverlands
+8|Lannister|Tywin|false|2|5|Storms End|The Stormlands
+8|Lannister|Tywin|false|2|6|Highgarden|The Reach
+8|Lannister|Tywin|false|2|7|Dorne|Dorne
+9|Arryn|Peter Baelish (little finger)|true|3|1|Winterfell|The North
+9|Arryn|Peter Baelish (little finger)|true|3|2|Casterly Rock|The Westernlands
+9|Arryn|Peter Baelish (little finger)|true|3|3|Eyrie|The Vale
+9|Arryn|Peter Baelish (little finger)|true|3|4|Riverrun|Riverlands
+9|Arryn|Peter Baelish (little finger)|true|3|5|Storms End|The Stormlands
+9|Arryn|Peter Baelish (little finger)|true|3|6|Highgarden|The Reach
+9|Arryn|Peter Baelish (little finger)|true|3|7|Dorne|Dorne
+10|Arryn|Robin Arryn|true|3|1|Winterfell|The North
+10|Arryn|Robin Arryn|true|3|2|Casterly Rock|The Westernlands
+10|Arryn|Robin Arryn|true|3|3|Eyrie|The Vale
+10|Arryn|Robin Arryn|true|3|4|Riverrun|Riverlands
+10|Arryn|Robin Arryn|true|3|5|Storms End|The Stormlands
+10|Arryn|Robin Arryn|true|3|6|Highgarden|The Reach
+10|Arryn|Robin Arryn|true|3|7|Dorne|Dorne
+11|Tully|Roslin|true|4|1|Winterfell|The North
+11|Tully|Roslin|true|4|2|Casterly Rock|The Westernlands
+11|Tully|Roslin|true|4|3|Eyrie|The Vale
+11|Tully|Roslin|true|4|4|Riverrun|Riverlands
+11|Tully|Roslin|true|4|5|Storms End|The Stormlands
+11|Tully|Roslin|true|4|6|Highgarden|The Reach
+11|Tully|Roslin|true|4|7|Dorne|Dorne
+12|Tully|Brynden|false|4|1|Winterfell|The North
+12|Tully|Brynden|false|4|2|Casterly Rock|The Westernlands
+12|Tully|Brynden|false|4|3|Eyrie|The Vale
+12|Tully|Brynden|false|4|4|Riverrun|Riverlands
+12|Tully|Brynden|false|4|5|Storms End|The Stormlands
+12|Tully|Brynden|false|4|6|Highgarden|The Reach
+12|Tully|Brynden|false|4|7|Dorne|Dorne
+13|Baratheon|Stannis (The One True King)|false|5|1|Winterfell|The North
+13|Baratheon|Stannis (The One True King)|false|5|2|Casterly Rock|The Westernlands
+13|Baratheon|Stannis (The One True King)|false|5|3|Eyrie|The Vale
+13|Baratheon|Stannis (The One True King)|false|5|4|Riverrun|Riverlands
+13|Baratheon|Stannis (The One True King)|false|5|5|Storms End|The Stormlands
+13|Baratheon|Stannis (The One True King)|false|5|6|Highgarden|The Reach
+13|Baratheon|Stannis (The One True King)|false|5|7|Dorne|Dorne
+14|Baratheon|Tommen|false|5|1|Winterfell|The North
+14|Baratheon|Tommen|false|5|2|Casterly Rock|The Westernlands
+14|Baratheon|Tommen|false|5|3|Eyrie|The Vale
+14|Baratheon|Tommen|false|5|4|Riverrun|Riverlands
+14|Baratheon|Tommen|false|5|5|Storms End|The Stormlands
+14|Baratheon|Tommen|false|5|6|Highgarden|The Reach
+14|Baratheon|Tommen|false|5|7|Dorne|Dorne
+16|Tyrell|Lady Tyrell|true|6|1|Winterfell|The North
+16|Tyrell|Lady Tyrell|true|6|2|Casterly Rock|The Westernlands
+16|Tyrell|Lady Tyrell|true|6|3|Eyrie|The Vale
+16|Tyrell|Lady Tyrell|true|6|4|Riverrun|Riverlands
+16|Tyrell|Lady Tyrell|true|6|5|Storms End|The Stormlands
+16|Tyrell|Lady Tyrell|true|6|6|Highgarden|The Reach
+16|Tyrell|Lady Tyrell|true|6|7|Dorne|Dorne
+17|Tyrell|Loras|false|6|1|Winterfell|The North
+17|Tyrell|Loras|false|6|2|Casterly Rock|The Westernlands
+17|Tyrell|Loras|false|6|3|Eyrie|The Vale
+17|Tyrell|Loras|false|6|4|Riverrun|Riverlands
+17|Tyrell|Loras|false|6|5|Storms End|The Stormlands
+17|Tyrell|Loras|false|6|6|Highgarden|The Reach
+17|Tyrell|Loras|false|6|7|Dorne|Dorne
+18|Tyrell|Marjorie|false|6|1|Winterfell|The North
+18|Tyrell|Marjorie|false|6|2|Casterly Rock|The Westernlands
+18|Tyrell|Marjorie|false|6|3|Eyrie|The Vale
+18|Tyrell|Marjorie|false|6|4|Riverrun|Riverlands
+18|Tyrell|Marjorie|false|6|5|Storms End|The Stormlands
+18|Tyrell|Marjorie|false|6|6|Highgarden|The Reach
+18|Tyrell|Marjorie|false|6|7|Dorne|Dorne
+19|Martell|Doran|false|7|1|Winterfell|The North
+19|Martell|Doran|false|7|2|Casterly Rock|The Westernlands
+19|Martell|Doran|false|7|3|Eyrie|The Vale
+19|Martell|Doran|false|7|4|Riverrun|Riverlands
+19|Martell|Doran|false|7|5|Storms End|The Stormlands
+19|Martell|Doran|false|7|6|Highgarden|The Reach
+19|Martell|Doran|false|7|7|Dorne|Dorne
+20|Martell|Oberyn|false|7|1|Winterfell|The North
+20|Martell|Oberyn|false|7|2|Casterly Rock|The Westernlands
+20|Martell|Oberyn|false|7|3|Eyrie|The Vale
+20|Martell|Oberyn|false|7|4|Riverrun|Riverlands
+20|Martell|Oberyn|false|7|5|Storms End|The Stormlands
+20|Martell|Oberyn|false|7|6|Highgarden|The Reach
+20|Martell|Oberyn|false|7|7|Dorne|Dorne
+21|Martell|Ellaria Sand|true|7|1|Winterfell|The North
+21|Martell|Ellaria Sand|true|7|2|Casterly Rock|The Westernlands
+21|Martell|Ellaria Sand|true|7|3|Eyrie|The Vale
+21|Martell|Ellaria Sand|true|7|4|Riverrun|Riverlands
+21|Martell|Ellaria Sand|true|7|5|Storms End|The Stormlands
+21|Martell|Ellaria Sand|true|7|6|Highgarden|The Reach
+21|Martell|Ellaria Sand|true|7|7|Dorne|Dorne
+
+
+
+****** LEFT OUTER JOIN *********
+
+sqlite> SELECT House FROM houses LEFT JOIN locations ON houses.location_id = locations.id;
+Stark
+Stark
+Stark
+Stark
+Lannister
+Lannister
+Lannister
+Lannister
+Arryn
+Arryn
+Tully
+Tully
+Baratheon
+Baratheon
+Tyrell
+Tyrell
+Tyrell
+Martell
+Martell
+Martell
+sqlite>
+
+
+sqlite> .dump
+
+sqlite> SELECT house, people, city FROM houses, locations WHERE houses.location_id = locations.id;
+Stark|Jon Snow (King of the north)|Winterfell
+Stark|Sansa|Winterfell
+Stark|Arya|Winterfell
+Stark|Ned|Winterfell
+Lannister|Ser Jaime|Casterly Rock
+Lannister|Cersei (Queen of Westeros)|Casterly Rock
+Lannister|Tyrion (Hand of the Queen Daenerys|Casterly Rock
+Lannister|Tywin|Casterly Rock
+Arryn|Peter Baelish (little finger)|Eyrie
+Arryn|Robin Arryn|Eyrie
+Tully|Roslin|Riverrun
+Tully|Brynden|Riverrun
+Baratheon|Stannis (The One True King)|Storms End
+Baratheon|Tommen|Storms End
+Tyrell|Lady Tyrell|Highgarden
+Tyrell|Loras|Highgarden
+Tyrell|Marjorie|Highgarden
+Martell|Doran|Dorne
+Martell|Oberyn|Dorne
+Martell|Ellaria Sand|Dorne
+sqlite>
+
+
+sqlite> SELECT people, alive, rulers_of FROM houses, locations on houses.location_id = locations.id;
+Jon Snow (King of the north)|true|The North
+Sansa|true|The North
+Arya|true|The North
+Ned|false|The North
+Ser Jaime|true|The Westernlands
+Cersei (Queen of Westeros)|true|The Westernlands
+Tyrion (Hand of the Queen Daenerys|true|The Westernlands
+Tywin|false|The Westernlands
+Peter Baelish (little finger)|true|The Vale
+Robin Arryn|true|The Vale
+Roslin|true|Riverlands
+Brynden|false|Riverlands
+Stannis (The One True King)|false|The Stormlands
+Tommen|false|The Stormlands
+Lady Tyrell|true|The Reach
+Loras|false|The Reach
+Marjorie|false|The Reach
+Doran|false|Dorne
+Oberyn|false|Dorne
+Ellaria Sand|true|Dorne
+sqlite>
