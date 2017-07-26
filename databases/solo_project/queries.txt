@@ -1,44 +1,151 @@
-solo_project (solo) :> sqlite3 got.db
-SQLite version 3.16.0 2016-11-04 19:09:39
-Enter ".help" for usage hints.
+
+*****Display the information in one table (either table is fine).******
+
+
+sqlite> SELECT * FROM locations
+   ...> ;
+1|Winterfell|The North
+2|Casterly Rock|The Westernlands
+3|Eyrie|The Vale
+4|Riverrun|Riverlands
+5|Storms End|The Stormlands
+6|Highgarden|The Reach
+7|Dorne|Dorne
+
+
+sqlite> SELECT * FROM houses
+   ...> ;
+1|Stark|Jon Snow (King of the north)|true|1
+2|Stark|Sansa|true|1
+3|Stark|Arya|true|1
+4|Stark|Ned|false|1
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|true|2
+9|Arryn|Peter Baelish (little finger)|true|3
+10|Arryn|Robin Arryn|true|3
+11|Tully|Roslin|true|4
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+15|Baratheon|Shireen|false|5
+16|Tyrell|Lady Tyrell|true|6
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
+21|Martell|Ellaria Sand|true|7
+
+sqlite> .tables
+houses     locations
+
+sqlite> SELECT * from houses WHERE alive ="false";
+4|Stark|Ned|false|1
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+15|Baratheon|Shireen|false|5
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
 sqlite>
-sqlite> CREATE TABLE locations(
-   ...> id INTEGER PRIMARY KEY,
-   ...> city VARCHAR(255),
-   ...> rulers_of VARCHAR(255)
-   ...> );
-sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Winterfell", "The North);
-sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Casterly Rock", "The Westernlands");
-sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Eyrie", "The Vale");
-sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Riverrun", "Riverlands");
-sqlite> INSERT INTO locations (city, rulers_of) VALUES ("Storms End", "The Stormlands");
-sqlite> INSERT INTO LOCATIONS (city, rulers_of) VALUES ("Highgarden", "The Reach");
-sqlite> INSERT INTO LOCATIONS (city, rulers_of) VALUES ("Dorne", "Dorne");
 
-sqlite> SELECT * FROM locations;
-1|Casterly Rock|The Westernlands
-2|Eyrie|The Vale
-3|Riverrun|Riverlands
-4|Storms End|The Stormlands
-5|Highgarden|The Reach
-6|Dorne|Dorne
+*****Update an item that meets some condition (you can choose a condition that makes sense).*******
+
+
+sqlite> UPDATE houses SET alive="false" WHERE people="Tywin";
+
+sqlite> SELECT * FROM houses WHERE house="Lannister";
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|false|2
+
+
+
+****Display the information in one table (either table is fine).******
+
+sqlite> SELECT * FROM houses, locations WHERE houses.location_id = locations.id
+   ...> ;
+1|Stark|Jon Snow (King of the north)|true|1|1|Winterfell|The North
+2|Stark|Sansa|true|1|1|Winterfell|The North
+3|Stark|Arya|true|1|1|Winterfell|The North
+4|Stark|Ned|false|1|1|Winterfell|The North
+5|Lannister|Ser Jaime|true|2|2|Casterly Rock|The Westernlands
+6|Lannister|Cersei (Queen of Westeros)|true|2|2|Casterly Rock|The Westernlands
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2|2|Casterly Rock|The Westernlands
+8|Lannister|Tywin|false|2|2|Casterly Rock|The Westernlands
+9|Arryn|Peter Baelish (little finger)|true|3|3|Eyrie|The Vale
+10|Arryn|Robin Arryn|true|3|3|Eyrie|The Vale
+11|Tully|Roslin|true|4|4|Riverrun|Riverlands
+12|Tully|Brynden|false|4|4|Riverrun|Riverlands
+13|Baratheon|Stannis (The One True King)|false|5|5|Storms End|The Stormlands
+14|Baratheon|Tommen|false|5|5|Storms End|The Stormlands
+15|Baratheon|Shireen|false|5|5|Storms End|The Stormlands
+16|Tyrell|Lady Tyrell|true|6|6|Highgarden|The Reach
+17|Tyrell|Loras|false|6|6|Highgarden|The Reach
+18|Tyrell|Marjorie|false|6|6|Highgarden|The Reach
+19|Martell|Doran|false|7|7|Dorne|Dorne
+20|Martell|Oberyn|false|7|7|Dorne|Dorne
+21|Martell|Ellaria Sand|true|7|7|Dorne|Dorne
+
+
+*****Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.*******
+
+sqlite> SELECT houses.people, locations.city FROM houses JOIN locations ON houses.location_id = locations.id;
+
+Jon Snow (King of the north)|Winterfell
+Sansa|Winterfell
+Arya|Winterfell
+Ned|Winterfell
+Ser Jaime|Casterly Rock
+Cersei (Queen of Westeros)|Casterly Rock
+Tyrion (Hand of the Queen Daenerys|Casterly Rock
+Tywin|Casterly Rock
+Peter Baelish (little finger)|Eyrie
+Robin Arryn|Eyrie
+Roslin|Riverrun
+Brynden|Riverrun
+Stannis (The One True King)|Storms End
+Tommen|Storms End
+Shireen|Storms End
+Lady Tyrell|Highgarden
+Loras|Highgarden
+Marjorie|Highgarden
+Doran|Dorne
+Oberyn|Dorne
+Ellaria Sand|Dorne
+
+
+
+
+*****Delete an item that meets some condition (you can choose a condition that makes sense).*****(15|Baratheon|Shireen|false|5)
+
+
+
+
+sqlite> DELETE FROM HOUSES WHERE ID = 15;
+sqlite> SELECT * FROM houses;
+1|Stark|Jon Snow (King of the north)|true|1
+2|Stark|Sansa|true|1
+3|Stark|Arya|true|1
+4|Stark|Ned|false|1
+5|Lannister|Ser Jaime|true|2
+6|Lannister|Cersei (Queen of Westeros)|true|2
+7|Lannister|Tyrion (Hand of the Queen Daenerys|true|2
+8|Lannister|Tywin|false|2
+9|Arryn|Peter Baelish (little finger)|true|3
+10|Arryn|Robin Arryn|true|3
+11|Tully|Roslin|true|4
+12|Tully|Brynden|false|4
+13|Baratheon|Stannis (The One True King)|false|5
+14|Baratheon|Tommen|false|5
+16|Tyrell|Lady Tyrell|true|6
+17|Tyrell|Loras|false|6
+18|Tyrell|Marjorie|false|6
+19|Martell|Doran|false|7
+20|Martell|Oberyn|false|7
+21|Martell|Ellaria Sand|true|7
 sqlite>
-
-sqlite> CREATE TABLE houses(
-   ...> id INTEGER PRIMARY KEY,
-   ...> house VARCHAR(255),
-   ...> people VARCHAR(255),
-   ...> alive BOOTLEAN,
-   ...> location_id INT,
-   ...> FOREIGN KEY (location_id) REFERENCES locations(id)
-   ...> );
-
-
-sqlite> CREATE TABLE players(
-   ...> name VARCHAR(255),
-   ...> number INT,
-   ...> team_id INT,
-   ...> FOREIGN KEY (team_id) REFERENCES teams(id)
-   ...> );
-sqlite> SELECT * FROM teams
-sqlite> INSERT INTO players (name, number, team_id) VALUES ("Paula Bunion", 45, 1);
