@@ -97,11 +97,3 @@ p results_list
 
 
 
-
-# new_day = day_of_week.each do |each_day|
-# db.execute('INSERT INTO clients (day) VALUES (?)', each_day)
-# end
-
-# new_workout = workouts.each do |each_workout|
-# db.execute('INSERT INTO clients (workout) VALUES (?)', each_workout)
-# end
