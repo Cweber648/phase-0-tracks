@@ -1,37 +1,67 @@
 require 'sqlite3'
-require 'faker'
+#require 'faker'
 
+# CREATE A DATABASE
 db = SQLite3::Database.new('itinerary.db')
 db.results_as_hash = true
 
-create_flight_cmd = <<-SQL
+create_table_cmd= <<-SQL
   CREATE TABLE IF NOT EXISTS flight(
     id INTEGER PRIMARY KEY,
-    departure_id INT,
-    arrival_id INT
-  )
-SQL
-
-create_departure_cmd = <<-SQL
-  CREATE TABLE IF NOT EXISTS departure(
-    id INTEGER PRIMARY KEY,
-   date DATE,
+    date VARCHAR(255),
     airline VARCHAR(255),
-   departure DATETIME,
-    arrival DATETIME
+    departure VARCHAR(255),
+    arrival VARCHAR(255) 
   )
 SQL
 
-create_arrival_cmd = <<-SQL
-  CREATE TABLE IF NOT EXISTS arrival(
-    id INTEGER PRIMARY KEY,
-    date DATE,
-    airline VARCHAR(255),
-    departure DATETIME,
-    arrival DATETIME
-  )
-SQL
+# CREATE TABLES
+db.execute(create_table_cmd)
 
-db.execute(create_flight_cmd)
-db.execute(create_departure_cmd)
-db.execute(create_arrival_cmd)
+# METHODS TO INSERT DATA INTO TABLES
+def add_flight(db, date, airline, departure, arrival)
+  db.execute("INSERT INTO flight (date, airline, departure, arrival) VALUES (?, ?, ?, ?)", [date, airline, departure, arrival])
+end
+
+
+# GET USER INPUT
+def ui
+  info= {}
+
+  puts "Date:" 
+  info[:date] = gets.chomp
+  puts "Airline:"
+  info[:airline] = gets.chomp
+  puts "Departure time:"
+  info[:departure] = gets.chomp
+  puts "Arrival time:"
+  info[:arrival] = gets.chomp
+
+  info
+end
+
+# DISPLAY ITINERARY
+def display_itinerary(db)
+  itinerary = db.execute("SELECT * FROM flight")
+  itinerary.each do |flight| 
+    puts "|DATE|AIRLINE|DEPART|ARRIVAL|"
+    puts "|#{flight["date"]}|#{flight["airline"]}|#{flight["departure"]}|#{flight["arrival"]}|"
+  end
+  puts "---------------------------------"
+end
+
+# Program
+# Get user input
+# add data into database
+# display database
+puts "Do you want to add new flight? yes/no"
+new_item = gets.chomp
+if new_item == 'yes'
+  puts "New flight:"
+  flight = ui
+  add_flight(db, flight[:date], flight[:airline], flight[:departure], flight[:arrival])
+  puts "List of flights"
+  display_itinerary(db)
+else
+  display_itinerary(db)
+end
