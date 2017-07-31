@@ -24,7 +24,7 @@ def create_client(db, name, workout, length, day)
     db.execute("INSERT INTO clients (name, workout ,length, day) VALUES (?, ?, ?, ?)", [name, workout, length, day])
 end
 
-1.times do
+5.times do
     create_client(db, Faker::Name.name, workouts.sample ,Faker::Number.between(45, 90), day_of_week.sample)
 end
 
@@ -69,7 +69,7 @@ end
 
 results_creation(db,client_list,workouts,day_of_week)
 results_list = db.execute("SELECT * FROM results")
-p results_list
+ p results_list
 
 
 
