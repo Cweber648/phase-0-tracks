@@ -7,3 +7,7 @@ for (var i = 0; i < subheads.length; i++) {
   element.style.fontWeight = "bold";
   element.style.fontStyle = "italic";
 }
+
+headline.onclick = function() {
+  console.log('clicked');
+};
