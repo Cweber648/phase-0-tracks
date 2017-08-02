@@ -10,6 +10,7 @@ db.results_as_hash = true
 # show students on the home page
 get '/' do
   @students = db.execute("SELECT * FROM students")
+  @messages = db.execute("SELECT * FROM messages")
   erb :home
 end
 
@@ -33,4 +34,14 @@ get '/addresses' do
                 sf:"633 Folsom Street (at Hawthorne), 6th Floor San Francisco CA 94107",
                 seattle:"83 S. King StreetSeattle, WA 98104"}
   erb :addresses
+end
+
+# Release 2
+get '/messages/new' do
+  erb :new_message
+end
+
+post '/messages' do
+  db.execute("INSERT INTO messages (message) VALUES (?)", params['message'])
+  redirect '/'
 end
