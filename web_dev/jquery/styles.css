@@ -1,3 +1,10 @@
 body {
   background-color: antiquewhite;
+  font-weight: bold;
+  color: LightSlateGrey;
+  text-align: center;
+}
+
+img {
+  border: 2px solid blue;
 }
