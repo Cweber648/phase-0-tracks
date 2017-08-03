@@ -34,3 +34,13 @@ San Diego, CA 92101", sf:"633 Folsom Street (at Hawthorne), 6th Floor San Franci
 Seattle, WA 98104"}
   erb :addresses
 end
+
+# Release 2
+get '/messages/new' do
+  erb :new_message
+end
+
+post '/messages' do
+  db.execute("INSERT INTO messages (message) VALUES (?)", params['message'])
+  redirect '/'
+end
